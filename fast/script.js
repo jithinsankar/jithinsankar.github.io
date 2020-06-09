@@ -1,5 +1,5 @@
 function live() {
-  var site = document.getElementById("site").value;
+  var site = document.getElementById("content-input").value;
     if (site!="")
       {
         document.getElementById("nmap").innerHTML ="nmap -sV -sT -sC -o nmapinitial " + site
@@ -25,8 +25,15 @@ function copyToClipboard(text) {
     document.execCommand("copy");
     document.body.removeChild(dummy);
 }
+
+
 function copyText(id){
 copyToClipboard(document.getElementById(id).innerHTML)
+  
+  var x = document.getElementById("snackbar");
+  x.innerHTML = "✅ Copied " + id + " command"
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   document.getElementById(id).style.fontsize="60px";
 
   console.log(document.getElementById(id).style.fontsize)
